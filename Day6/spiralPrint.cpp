@@ -1,24 +1,38 @@
 void spiralPrint(int **input, int nRows, int nCols)
 {
-    //Write your code here
-    for(int i=0;i<=nRows/2;i++){
-        for(int j=i;j<nCols-1-i;j++){
-            cout<<input[i][j]<<" ";
-        } 
+   int count = 0;
+   int total = nRows * nCols;
 
-        for(int j=i;j<nRows-1-i;j++){
-            cout<<input[j][nCols-1-i]<<" ";
-        } 
+   //indexes 
+   int startingRow =0;
+   int startingCol =0;
+   int endingRow =nRows -1;
+   int endingCol =nCols -1;
 
-        for(int j=nCols-1-i;j>i;j--){
-            cout<<input[nRows-i-1][j]<<" ";
-        } 
-
-        for(int j=nRows-i-1;j>i;j--){
-            cout<<input[j][i]<<" ";
-        }
-
-    }
-
-    if((nRows&1)&&(nCols&1)) cout<<input[nRows/2][nCols/2];
+   while( count < total){
+       //print starting row
+       for(int i =startingCol;count < total && i<= endingCol; i++){
+           cout<<input[startingRow][i]<<" ";
+           count++;
+       }
+       startingRow++;
+         //print ending col
+       for(int i =startingRow ;count < total && i<= endingRow; i++){
+           cout<<input[i][endingCol]<<" ";
+           count++;
+       }
+       endingCol--;
+         //print ending row
+       for(int i =endingCol ;count < total && i>= startingCol; i--){
+           cout<<input[endingRow][i]<<" ";
+           count++;
+       }
+       endingRow--;
+          //print starting coloumn
+       for(int i =endingRow ;count < total && i>= startingRow; i--){
+           cout<<input[i][startingCol]<<" ";
+           count++;
+       }
+      startingCol++;
+   }
 }
