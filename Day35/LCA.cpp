@@ -21,6 +21,6 @@ int lowestCommonAncestor(TreeNode<int> *root, int x, int y)
         return rightAns; // Common ancestor found in the right subtree
     } else {
         return root->data; // Common ancestor found in both subtrees
-    }    
+    } 
 
 }
